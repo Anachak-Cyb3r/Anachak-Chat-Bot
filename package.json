@@ -1,0 +1,36 @@
+{
+  "name": "cambodia-agriculture-telegram-bot",
+  "version": "1.0.0",
+  "description": "AI-powered Telegram bot to help Cambodian farmers with agriculture questions",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node src/server.ts",
+    "test": "jest"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "agriculture",
+    "cambodia",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "telegraf": "^4.15.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.8",
+    "@types/node": "^20.10.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.4.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  }
+}
