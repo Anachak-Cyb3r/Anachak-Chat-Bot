@@ -1,207 +1,294 @@
-# Cambodia Agriculture Telegram Bot 🌾
+# 🌾 Anachak Agriculture Chatbot
 
-An AI-powered Telegram bot that helps Cambodian farmers with agriculture-related questions. The bot provides expert advice on crop cultivation, pest management, soil health, and farming practices tailored to Cambodia's climate and conditions.
+<div align="center">
 
-## Features
+![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)
+![Telegram Bot API](https://img.shields.io/badge/Telegram%20Bot%20API-Latest-blue.svg)
+![Google Gemini](https://img.shields.io/badge/Google%20Gemini-2.0%20Flash-orange.svg)
+![License](https://img.shields.io/badge/License-Anachak%20Cyb3r-green.svg)
+![Status](https://img.shields.io/badge/Status-Active-success.svg)
 
-- 🌱 **Crop Cultivation Advice** - Planting schedules, growing tips for Cambodia's tropical climate
-- 🐛 **Pest & Disease Management** - Identification and treatment recommendations
-- 🌍 **Soil Health** - Fertilization and composting guidance
-- 💧 **Water Management** - Irrigation techniques and water conservation
-- 🌿 **Organic Farming** - Sustainable and organic farming methods
-- 🇰🇭 **Multilingual** - Supports both Khmer (ខ្មែរ) and English
+**An AI-powered agricultural advisor providing professional consultation for Cambodian farmers**
 
-## Prerequisites
+[Features](#-key-features) • [Installation](#-installation) • [Usage](#-usage) • [Contributing](#-contributing) • [Team](#-contributors)
 
-- Node.js 18+ and npm
-- A Telegram Bot Token (from [@BotFather](https://t.me/botfather))
-- A Google Gemini API Key (FREE! from [Google AI Studio](https://makersuite.google.com/app/apikey))
-
-## Setup Instructions
-
-### 1. Get Your Telegram Bot Token
-
-1. Open Telegram and search for [@BotFather](https://t.me/botfather)
-2. Send `/newbot` command
-3. Follow the instructions to create your bot
-4. Copy the bot token provided by BotFather
-
-### 2. Get Your Google Gemini API Key (FREE!)
-
-1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Sign in with your Google account
-3. Click "Create API Key"
-4. Copy your API key
-
-**Note:** Google Gemini is completely FREE with generous limits (60 requests/minute)!
-
-### 3. Install Dependencies
-
-```bash
-npm install
-```
-
-### 4. Configure Environment Variables
-
-Create a `.env` file in the project root:
-
-```bash
-cp .env.example .env
-```
-
-Edit `.env` and add your credentials:
-
-```env
-TELEGRAM_BOT_TOKEN=your_telegram_bot_token_here
-GOOGLE_API_KEY=your_google_gemini_api_key_here
-AI_MODEL=gemini-pro
-PORT=3000
-NODE_ENV=development
-```
-
-### 5. Build the Project
-
-```bash
-npm run build
-```
-
-### 6. Run the Bot
-
-**Development mode (with auto-reload):**
-```bash
-npm run dev
-```
-
-**Production mode:**
-```bash
-npm start
-```
-
-The bot will start in polling mode (development) and will be ready to receive messages!
-
-## Usage
-
-1. Open Telegram and search for your bot by username
-2. Start a conversation with `/start`
-3. Ask any agriculture-related question in English or Khmer
-4. Get instant AI-powered advice!
-
-### Example Questions
-
-**English:**
-- "When is the best time to plant rice in Cambodia?"
-- "How do I treat brown spot disease on rice?"
-- "What organic fertilizer is good for vegetables?"
-
-**Khmer:**
-- "តើពេលណាល្អបំផុតក្នុងការដាំស្រូវនៅកម្ពុជា?"
-- "តើខ្ញុំគួរព្យាបាលជំងឺស្នាមត្នោតនៅលើដើមស្រូវយ៉ាងដូចម្តេច?"
-- "តើជីធម្មជាតិអ្វីល្អសម្រាប់សួនបន្លែ?"
-
-## Commands
-
-- `/start` - Show welcome message and bot capabilities
-- `/help` - Display usage instructions
-
-## Deployment
-
-### Deploy to Production (with Webhook)
-
-For production deployment, you'll need:
-1. A server with HTTPS support (required by Telegram)
-2. A domain name pointing to your server
-
-Update your `.env`:
-```env
-TELEGRAM_WEBHOOK_URL=https://your-domain.com
-NODE_ENV=production
-```
-
-The bot will automatically set up the webhook when started.
-
-### Deployment Options
-
-**Option 1: Railway**
-1. Create account at [Railway.app](https://railway.app)
-2. Create new project from GitHub repo
-3. Add environment variables in Railway dashboard
-4. Deploy!
-
-**Option 2: Heroku**
-1. Create account at [Heroku.com](https://heroku.com)
-2. Install Heroku CLI
-3. Run: `heroku create your-bot-name`
-4. Set environment variables: `heroku config:set TELEGRAM_BOT_TOKEN=...`
-5. Deploy: `git push heroku main`
-
-**Option 3: Docker**
-```bash
-docker build -t cambodia-agriculture-bot .
-docker run -d --env-file .env -p 3000:3000 cambodia-agriculture-bot
-```
-
-## Project Structure
-
-```
-├── src/
-│   ├── bot.ts                    # Bot initialization and handlers
-│   ├── server.ts                 # Express server and webhook setup
-│   ├── config.ts                 # Configuration management
-│   ├── handlers/
-│   │   ├── commands.ts           # /start and /help commands
-│   │   └── message-processor.ts # Message processing logic
-│   ├── services/
-│   │   ├── ai-service.ts         # OpenAI integration
-│   │   └── conversation-manager.ts # Conversation context
-│   ├── utils/
-│   │   ├── language-detector.ts  # Language detection
-│   │   ├── response-formatter.ts # Response formatting
-│   │   ├── error-handler.ts      # Error categorization
-│   │   └── retry-helper.ts       # Retry logic
-│   └── types/
-│       ├── config.types.ts       # Configuration types
-│       └── telegram.types.ts     # Telegram types
-├── .env.example                  # Environment variables template
-├── package.json
-├── tsconfig.json
-└── README.md
-```
-
-## Troubleshooting
-
-**Bot doesn't respond:**
-- Check that your bot token is correct
-- Verify the bot is running (`npm run dev`)
-- Check console for error messages
-
-**AI responses are slow:**
-- This is normal for the first request
-- Google Gemini is usually very fast (1-3 seconds)
-
-**"Configuration issue" error:**
-- Verify your Google API key is valid
-- Make sure you created the key at [Google AI Studio](https://makersuite.google.com/app/apikey)
-
-## Cost Considerations
-
-- **Google Gemini API**: ✅ **COMPLETELY FREE!** (60 requests/minute, 1500 requests/day)
-- **Hosting**: Free tier available on Railway, Heroku, or similar platforms
-- **Telegram Bot**: Completely free
-
-**Total Cost: $0** 🎉
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit issues or pull requests.
-
-## License
-
-MIT License - feel free to use this bot for your own projects!
-
-## Support
-
-For questions or issues, please open an issue on GitHub or contact the maintainer.
+</div>
 
 ---
 
-Made with ❤️ for Cambodian farmers 🇰🇭
+## 🌾 Overview
+
+**Anachak Agriculture Chatbot** is an intelligent Telegram bot developed by **Anachak Cyb3r** to empower Cambodian farmers with professional agricultural knowledge. This bot provides 24/7 AI-powered consultation services, helping farmers make informed decisions about crop cultivation, pest management, soil health, and sustainable farming practices.
+
+This bot is a **sub-service** of the main [**Anachak Kasekor Chatbot**](https://github.com/Anachak-Cyb3r/Anachak-Kasekor-Chatbot) ecosystem, specifically focused on providing expert agricultural advice through conversational AI.
+
+---
+
+## 🌟 Key Features
+
+| Feature | Description |
+|---------|-------------|
+| 🤖 **AI-Powered Consultation** | Professional agricultural advice powered by Google Gemini 2.0 Flash |
+| 🌐 **Bilingual Support** | Automatic language detection for Khmer (ភាសាខ្មែរ) and English |
+| 💬 **Conversation Memory** | Maintains context across multiple questions for natural dialogue |
+| 🌱 **Comprehensive Topics** | Covers crop cultivation, pest control, soil health, irrigation, and more |
+| 📱 **User-Friendly Interface** | Clean, professional formatting with emojis and structured responses |
+| ⚡ **24/7 Availability** | Always ready to help farmers with instant responses |
+| 🔒 **Secure & Private** | No data collection, conversations are temporary |
+| 🆓 **Free to Use** | Powered by free Google Gemini API |
+
+---
+
+## 🚀 Installation
+
+### Prerequisites
+
+- Node.js 18 or higher
+- npm (Node package manager)
+- Telegram Bot Token (from [@BotFather](https://t.me/BotFather))
+- Google Gemini API Key (free from [Google AI Studio](https://makersuite.google.com/app/apikey))
+
+### Step-by-Step Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Anachak-Cyb3r/Anachak-Chat-Bot.git
+   cd Anachak-Chat-Bot
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Configure environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Edit `.env` and add your credentials:
+   ```env
+   TELEGRAM_BOT_TOKEN=your_telegram_bot_token_here
+   GOOGLE_API_KEY=your_google_gemini_api_key_here
+   ```
+
+4. **Build the project**
+   ```bash
+   npm run build
+   ```
+
+5. **Run the bot**
+   ```bash
+   npm start
+   ```
+
+---
+
+## 📖 Usage
+
+### Starting the Bot
+
+1. Open Telegram and search for **@cambochatAI_bot**
+2. Send `/start` command to see the welcome message
+3. Ask any agriculture-related question in Khmer or English
+4. The bot automatically detects your language and responds accordingly
+
+### Available Commands
+
+- `/start` - Display welcome message and bot capabilities
+- `/help` - Show usage instructions and tips
+
+### Example Questions
+
+**In Khmer:**
+- "តើពេលណាដាំស្រូវ?"
+- "តើធ្វើដូចម្តេចដើម្បីព្យាបាលសត្វល្អិត?"
+- "តើជីធម្មជាតិអ្វីល្អបំផុត?"
+
+**In English:**
+- "When should I plant rice?"
+- "How do I treat pests on vegetables?"
+- "What is the best organic fertilizer?"
+
+---
+
+## 🛠️ Technology Stack
+
+- **Language:** TypeScript 5.0+
+- **Runtime:** Node.js 18+
+- **Framework:** Telegraf (Telegram Bot Framework)
+- **AI Engine:** Google Gemini 2.0 Flash
+- **Testing:** Jest
+- **Build Tool:** TypeScript Compiler
+- **Deployment:** Docker support included
+
+---
+
+## 📁 Project Structure
+
+```
+Anachak-Chat-Bot/
+├── src/
+│   ├── bot.ts                      # Main bot initialization
+│   ├── server.ts                   # Server entry point
+│   ├── config.ts                   # Configuration management
+│   ├── handlers/
+│   │   ├── commands.ts             # Command handlers (/start, /help)
+│   │   └── message-processor.ts   # Message processing logic
+│   ├── services/
+│   │   ├── ai-service.ts           # Google Gemini AI integration
+│   │   └── conversation-manager.ts # Conversation context management
+│   ├── utils/
+│   │   ├── language-detector.ts    # Automatic language detection
+│   │   ├── response-formatter.ts   # Response formatting utilities
+│   │   ├── error-handler.ts        # Error handling and logging
+│   │   └── retry-helper.ts         # Retry logic for API calls
+│   └── types/
+│       ├── config.types.ts         # Configuration type definitions
+│       └── telegram.types.ts       # Telegram type definitions
+├── tests/
+│   └── bot.test.ts                 # Unit tests
+├── .kiro/specs/                    # Project specifications
+├── package.json                    # Dependencies and scripts
+├── tsconfig.json                   # TypeScript configuration
+├── jest.config.js                  # Jest testing configuration
+├── Dockerfile                      # Docker containerization
+├── .env.example                    # Environment variables template
+├── .gitignore                      # Git ignore rules
+└── README.md                       # Project documentation
+```
+
+---
+
+## 🐳 Docker Deployment
+
+Build and run with Docker:
+
+```bash
+# Build the image
+docker build -t anachak-agriculture-bot .
+
+# Run the container
+docker run -d --env-file .env anachak-agriculture-bot
+```
+
+---
+
+## 🧪 Testing
+
+Run the test suite:
+
+```bash
+npm test
+```
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions from the community! Here's how you can help:
+
+1. **Fork the repository**
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/AmazingFeature
+   ```
+3. **Commit your changes**
+   ```bash
+   git commit -m "Add some AmazingFeature"
+   ```
+4. **Push to the branch**
+   ```bash
+   git push origin feature/AmazingFeature
+   ```
+5. **Open a Pull Request**
+
+### Development Guidelines
+
+- Follow TypeScript best practices
+- Write clear, descriptive commit messages
+- Add tests for new features
+- Update documentation as needed
+- Ensure code passes linting and type checks
+
+---
+
+## 🧠 Our Mission
+
+To make farming **smarter, easier, and more sustainable** by providing **accessible AI-powered agricultural consultation** — building a better future for Cambodian farmers through technology and innovation.
+
+---
+
+## 🔗 Related Projects
+
+This bot is part of the **Anachak Kasekor** ecosystem:
+
+- 🏠 [**Main Hub Bot**](https://github.com/Anachak-Cyb3r/Anachak-Kasekor-Chatbot) - Central hub connecting all agricultural services
+- 🌾 **Agriculture Chatbot** (This Repository) - AI agricultural advisor
+- 🧪 Soil Detection Bot - Soil analysis and crop recommendations
+- 🌾 Rice Seed Analysis Bot - Rice variety identification
+- 🦠 Disease Detection Bot - Plant disease diagnosis
+- 🌤️ Weather Forecasting Bot - Agricultural weather updates
+- 🛒 Marketplace Bot - Agricultural product marketplace
+
+---
+
+## 👨‍💻 Contributors
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/identicons/1.png" width="100px;" alt=""/>
+      <br />
+      <sub><b>Pring Rady</b></sub>
+    </td>
+    <td align="center">
+      <img src="https://github.com/identicons/2.png" width="100px;" alt=""/>
+      <br />
+      <sub><b>Morn Chanthoung</b></sub>
+    </td>
+    <td align="center">
+      <img src="https://github.com/identicons/3.png" width="100px;" alt=""/>
+      <br />
+      <sub><b>Mi Lyheng</b></sub>
+    </td>
+  </tr>
+</table>
+
+---
+
+## 📞 Support
+
+For support, questions, or feedback:
+- Open an issue on GitHub
+- Contact the Anachak Cyb3r Team
+- Visit the main project: [Anachak Kasekor Chatbot](https://github.com/Anachak-Cyb3r/Anachak-Kasekor-Chatbot)
+
+---
+
+## 📜 License
+
+This project is licensed under **Anachak Cyb3r**.  
+All rights reserved © 2025.
+
+---
+
+## 🙏 Acknowledgments
+
+- Thanks to all Cambodian farmers who inspired this project
+- Google for providing free Gemini API access
+- Telegram Bot API for the excellent platform
+- The open-source community for their invaluable tools
+
+---
+
+<div align="center">
+
+**Made with ❤️ by Anachak Cyb3r**
+
+⭐ Star this repository if you find it helpful!
+
+[Main Project](https://github.com/Anachak-Cyb3r/Anachak-Kasekor-Chatbot) • [Report Bug](https://github.com/Anachak-Cyb3r/Anachak-Chat-Bot/issues) • [Request Feature](https://github.com/Anachak-Cyb3r/Anachak-Chat-Bot/issues)
+
+</div>
